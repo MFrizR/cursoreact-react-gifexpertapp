@@ -6,7 +6,7 @@ const AddCategory = ({ setCategories } ) => {
     const [inputValue, setInputValue] = useState(' ');
 
     const handleInputChange = (e) => {
-        console.log(e.target.value);
+       // console.log(e.target.value);
         setInputValue (e.target.value)
     }
 
@@ -19,12 +19,13 @@ const AddCategory = ({ setCategories } ) => {
             setCategories( cats => [  inputValue,...cats]);
             setInputValue('');
         }
-        console.log('Submit Hecho');
+       // console.log('Submit Hecho');
     }
 
     return (
         <>
         <form onSubmit = { handleSubmit }>
+            <p>{ inputValue }</p>
             <input
                 type= "text"
                 value= { inputValue }

@@ -1,13 +1,14 @@
 //import React, { useState, useEffect } from 'react'
 import React from 'react';
+import PropsTypes from 'prop-types'
 import { GifGridItem } from './GifGridItem';
 //import { getGifs } from './helpers/getGifs';
-import { useFetchGifs } from './hooks/useFetchGifs';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 
-const GifGrid = ( {category} ) => {
+export const GifGrid = ( {category} ) => {
 
 
-const {data:images, loading} = useFetchGifs( category);  
+    const {data, loading} = useFetchGifs( category );  
 
 //console.log(data)
 //const [count, setCount] = useState(0);
@@ -29,7 +30,7 @@ const {data:images, loading} = useFetchGifs( category);
            
 
             {
-                images.map (( img ) => (
+                data.map (( img ) => (
 
                     <GifGridItem 
                         { ...img }
@@ -52,4 +53,7 @@ const {data:images, loading} = useFetchGifs( category);
     )
 }
 
-export default GifGrid
+GifGrid.PropsTypes = {
+
+    category: PropsTypes.string.isRequired
+}
